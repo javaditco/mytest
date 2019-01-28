@@ -12,5 +12,13 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect(asset('/admin'));
+});
+
+Route::group(['namespace'=>'admin', 'prefix'=>'admin'], function () {
+    Route::get('/', 'adminController@index');
+    Route::post('/product/submit', 'adminController@productSubmit');
+    
+
+
 });
